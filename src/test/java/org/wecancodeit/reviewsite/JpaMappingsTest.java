@@ -59,8 +59,8 @@ public class JpaMappingsTest {
 		Review second = new Review("Tom Petty", category);
 		reviewRepo.save(second);
 
-		entityManager.flush(); // forces pending stuff to happen
-		entityManager.clear(); // forces jpa to hit the db when we try to find it
+		entityManager.flush();
+		entityManager.clear(); 
 
 		category = categoryRepo.findOne(categoryId);
 		assertThat(category.getReviews(), containsInAnyOrder(first, second));
@@ -70,10 +70,44 @@ public class JpaMappingsTest {
 		Tag tag = tagRepo.save(new Tag("its name"));
 		long tagId = tag.getId();
 
-		entityManager.flush(); // forces jpa to hit the db when we try to find it
+		entityManager.flush();
 		entityManager.clear();
 
 		tag = tagRepo.findOne(tagId);
 		assertThat(tag.getName(), is("its name"));
+	}
+	@Test
+	public void shouldEstablishCourseToTagsRelationships() {
+
+		Tag sports = tagRepo.save(new Tag("Sports"));
+		Tag design = tagRepo.save(new Tag("Design"));
+		
+		Review review = new Review("Tags", sports, design);
+		review = reviewRepo.save(review);
+		long tagsId = review.getId();
+		
+		entityManager.flush();
+		entityManager.clear();
+		
+		review = reviewRepo.findOne(tagsId);
+		assertThat(review.getTags(), containsInAnyOrder(sports, design));
+		
+	}
+	@Test
+	public void shouldEstablishTagToCoursesRelationship() {
+		Tag tag = tagRepo.save(new Tag("Sports"));
+		long tagId = tag.getId();
+
+		Review sports = new Review("Sports", tag);
+		sports = reviewRepo.save(sports);
+		
+		Review design = new Review("Scripting Languages", tag);
+		design = reviewRepo.save(design);
+		
+		entityManager.flush();
+		entityManager.clear();
+	
+		tag = tagRepo.findOne(tagId);
+		assertThat(tag.getReviews(), containsInAnyOrder(sports, design));
 	}
 }
