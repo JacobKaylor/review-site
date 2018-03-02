@@ -27,6 +27,9 @@ public class JpaMappingsTest {
 	@Resource
 	private CategoryRepository categoryRepo;
 	
+	@Resource
+	private TagRepository tagRepo;
+	
 	@Test
 	public void shouldSaveAndLoadCourse() {
 		// more concise to do:
@@ -61,5 +64,16 @@ public class JpaMappingsTest {
 
 		category = categoryRepo.findOne(categoryId);
 		assertThat(category.getReviews(), containsInAnyOrder(first, second));
+	}
+	@Test
+	public void shouldSaveAndLoadTag() {
+		Tag tag = tagRepo.save(new Tag("its name"));
+		long tagId = tag.getId();
+
+		entityManager.flush(); // forces jpa to hit the db when we try to find it
+		entityManager.clear();
+
+		tag = tagRepo.findOne(tagId);
+		assertThat(tag.getName(), is("its name"));
 	}
 }
