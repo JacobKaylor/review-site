@@ -7,11 +7,40 @@ import javax.persistence.Id;
 @Entity
 public class Review {
 	public Review(String name) {
-		// TODO Auto-generated constructor stub
+		this.name = name;
+				
 	}
 	@Id
 	@GeneratedValue
 	private long id;
 	private String name;
+	
+	public long getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	@Override
+	public int hashCode() {
+		return ((Long) id).hashCode();
+	}
+	
+	@SuppressWarnings("unused")
+	private Review() {
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		return id == ((Review) obj).id;
+	}
 	
 }
