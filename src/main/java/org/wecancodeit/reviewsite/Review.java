@@ -3,18 +3,27 @@ package org.wecancodeit.reviewsite;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
+	public Review(String name, Category category) {
+		this.name = name;
+		this.category = category;
+	}
+
 	public Review(String name) {
 		this.name = name;
-				
 	}
+
 	@Id
 	@GeneratedValue
 	private long id;
 	private String name;
-	
+
+	@ManyToOne
+	private Category category;
+
 	public long getId() {
 		return id;
 	}
@@ -22,12 +31,12 @@ public class Review {
 	public String getName() {
 		return name;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();
 	}
-	
+
 	@SuppressWarnings("unused")
 	private Review() {
 	}
@@ -42,5 +51,5 @@ public class Review {
 		}
 		return id == ((Review) obj).id;
 	}
-	
+
 }
