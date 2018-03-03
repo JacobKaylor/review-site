@@ -53,10 +53,10 @@ public class JpaMappingsTest {
 		categoryRepo.save(category);
 		long categoryId = category.getId();
 
-		Review first = new Review("Pink Floyd", category);
+		Review first = new Review(category,"Pink Floyd","Relaxing", "");
 		reviewRepo.save(first);
 
-		Review second = new Review("Tom Petty", category);
+		Review second = new Review(category, "Tom Petty","Connection","" );
 		reviewRepo.save(second);
 
 		entityManager.flush();
@@ -101,7 +101,7 @@ public class JpaMappingsTest {
 		Review sports = new Review("Sports", tag);
 		sports = reviewRepo.save(sports);
 		
-		Review design = new Review("Scripting Languages", tag);
+		Review design = new Review("Design", tag);
 		design = reviewRepo.save(design);
 		
 		entityManager.flush();

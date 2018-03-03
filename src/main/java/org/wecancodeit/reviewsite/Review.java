@@ -8,14 +8,18 @@ import java.util.HashSet;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
-	public Review(String name, Category category) {
+
+	public Review(Category category, String name, String description, String image) {
 		this.name = name;
 		this.category = category;
+		this.description = description;
+		this.image = image;
 	}
 
 	public Review(String name) {
@@ -26,15 +30,22 @@ public class Review {
 	@GeneratedValue
 	private long id;
 	private String name;
+	@Lob
+	private String description;
+	@Lob
+	private String image;
 
 	@ManyToOne
 	private Category category;
 
 	@ManyToMany
 	private Collection<Tag> tags;
-	
+
 	public Collection<Tag> getTags() {
 		return tags;
+	}
+	public Category getCategory() {
+		return category;
 	}
 
 	public long getId() {
@@ -43,6 +54,9 @@ public class Review {
 
 	public String getName() {
 		return name;
+	}
+	public String getImage() {
+		return image;
 	}
 
 	@SuppressWarnings("unused")
@@ -53,7 +67,7 @@ public class Review {
 		this.name = name;
 		this.tags = new HashSet<>(asList(tags));
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();

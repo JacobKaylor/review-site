@@ -24,10 +24,16 @@ public class ReviewPopulator implements CommandLineRunner{
 		Tag design = new Tag("Design");
 		design = tagRepo.save(design);
 		// we save on the *one* side of the relationship first
-		Category category = categoryRepo.save(new Category("All", sports, design));
+		Category music = categoryRepo.save(new Category("Music"));
+		Category movies = categoryRepo.save(new Category("Movies"));
+		Category videogames = categoryRepo.save(new Category("Video Games"));
+		Category books = categoryRepo.save(new Category("Books"));
+		
 		// then the things on the *many* side.
-		reviewRepo.save(new Review("Baseball", category));
-		reviewRepo.save(new Review("Basketball", category));
+		reviewRepo.save(new Review(music,"Pink Floyd", "Are we on the dark side of the moon yet?" , "imageUrl"));
+		reviewRepo.save(new Review(movies,"Talladega Nights: The Ballad of Ricky Bobby", "I like to go fast"  , "imageUrl"));
+		
+		
 		
 	}
 
