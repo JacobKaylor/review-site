@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<link rel="stylesheet" type="text/css" href="./layout.css" />
 <title th:text="'Category: ' + ${category.name}"></title>
 </head>
 <header>
@@ -9,7 +11,7 @@
 	</nav>
 </header>
 <body>
-
+<div class="container">
 	<section class="main">
 		<h1 th:text="${category.name}+' Reviews'"></h1>
 		<ul>
@@ -18,8 +20,11 @@
 				th:text="${currentCategory.name}"></a></li>
 		</ul>
 	</section>
+	<footer>
+		<p> I hope these reviews have helped</p>
+	</footer>
 
-
+</div>
 </body>
 </html>
 
