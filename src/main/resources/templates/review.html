@@ -20,9 +20,12 @@
 <body>
 
 	<article th:each="reviews: ${review}">
+	
+		<img th:src="${review.image}" height="300px" width="300px"></img>
 
-		<h2>Description</h2>
+		<h3>Description</h3>
 		<p th:text="${review.description}" />
+		
 
 	</article>
 

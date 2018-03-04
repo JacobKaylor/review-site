@@ -55,7 +55,7 @@ public class Review {
 	public String getName() {
 		return name;
 	}
-	public String getImageUrl() {
+	public String getImage() {
 		return image;
 	}
 	public String getDescription() {
