@@ -3,7 +3,7 @@
 
 <head>
 
-<title>A List of categories</title>
+<title>A List of reviews</title>
 
 </head>
 
@@ -12,12 +12,12 @@
 		<h1>Categories</h1>
 	</header>
 
-	<article th:each="category: ${categories}">
-		<h2>
-			<a th:href = "@{/category(id=${category.id})}"
-					th:text="${category.name}"></a>
-					
-		</h2>
-	</article>
+	<ul th:each="category: ${categories}">
+		<li>
+		<a th:href="@{/category(id=${category.id})}"
+			th:text="${category.name}"></a> 
+		</li>
+	</ul>
+
 </body>
 </html>

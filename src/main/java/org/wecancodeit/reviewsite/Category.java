@@ -5,12 +5,12 @@ import static java.util.Arrays.asList;
 import java.util.Collection;
 import java.util.HashSet;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
 
 @Entity
 public class Category {
@@ -18,11 +18,9 @@ public class Category {
 	@Id
 	@GeneratedValue
 	
-	@Column(name = "category")
 	
 	private long id;
 	private String name;
-	private String image;
 
 	@OneToMany(mappedBy = "category")
 	private Collection<Review> reviews;

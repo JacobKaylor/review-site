@@ -3,19 +3,24 @@
 <head>
 <title th:text="'Category: ' + ${category.name}" ></title>
 </head>
-<body>
-
 	<header>
-		<h1 th:text= "${category.name}"></h1>
+		 <h1 th:text= "${category.name} +' Reviews'"> </h1>
 	</header>
-	<div th:each="currentCategory: ${category}">
-	<h2>
-	 
-	</h2>
+	<body>
 	
-	</div>
+		<section class="main">
+			<h1 th:text="${category.name}"></h1>
+			<ul>
+				<li th:each="currentCategory: ${category.reviews}"><a
+					th:href="@{./review(id=${currentCategory.id})}" th:text="${currentCategory.name}"></a></li>
+			</ul>
+		</section>
+
+	
 	
 	<a href="http://localhost:8080/categories">Back to home</a>
+	
+	
 	</body>
 	</html>
 	

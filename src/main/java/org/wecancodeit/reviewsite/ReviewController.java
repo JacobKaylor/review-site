@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 		@Resource
 		private CategoryRepository categoryRepo;
 
-//		@RequestMapping(value = "reviews")
-//		public String getAllReviews(Model model) {
-//			model.addAttribute("reviews", reviewRepo.findAll());
-//			return "reviews";
-//		}
+		@RequestMapping(value = "reviews")
+		public String getAllReviews(Model model) {
+			model.addAttribute("reviews", reviewRepo.findAll());
+			return "reviews";
+		}
 		
 		@RequestMapping(value = "categories")
 		public String getAllCategories(Model model) {
@@ -33,10 +33,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 			return "category";
 		}
 
-//		@RequestMapping("review")
-//		public String getAReview(@RequestParam Long id, Model model) {
-//			model.addAttribute("reviews", reviewRepo.findReview(id));
-//			return "review";
-//		}
+		@RequestMapping("review")
+		public String getAReview(@RequestParam("id") long id, Model model) {
+			model.addAttribute("category", reviewRepo.findOne(id));
+			return "review";
+		}
 	}
 
