@@ -9,14 +9,13 @@
 
 <body>
 	<header>
-		<h1>A List of Reviews</h1>
+		<ul>
+			<li><a href="/categories">Categories</a></li>
+		</ul>
 	</header>
-	
-	<h2>Select Review</h2>
-	
-	<a th:each = "review: ${reviews}"
-		th: href="@{review(id=${review.id})}"></a>
-		<h2 th:text="${review.review}"></h2>
+
+	<a th:each="review: ${reviews}" th:href="@{/review(id=${review.id})}"
+		th:text="${review.name}"></a>
 
 </body>
 </html>

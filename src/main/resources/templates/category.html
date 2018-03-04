@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title th:text="'Category: ' + ${category.name}" ></title>
+<title th:text="'Category: ' + ${category.name}"></title>
 </head>
-	<header>
-		 <h1 th:text= "${category.name} +' Reviews'"> </h1>
-	</header>
-	<body>
-	
-		<section class="main">
-			<h1 th:text="${category.name}"></h1>
-			<ul>
-				<li th:each="currentCategory: ${category.reviews}"><a
-					th:href="@{./review(id=${currentCategory.id})}" th:text="${currentCategory.name}"></a></li>
-			</ul>
-		</section>
+<header>
+	<nav>
+		<ul>
+			<li><a href="/categories">Categories</a></li>
+			
+		</ul>
+	</nav>
+</header>
+<body>
 
-	
-	
-	<a href="http://localhost:8080/categories">Back to home</a>
-	
-	
-	</body>
-	</html>
-	
-	
-	
-	
+	<section class="main">
+		<h1 th:text="${category.name}+' Reviews'"></h1>
+		<ul>
+			<li th:each="currentCategory: ${category.reviews}"><a
+				th:href="@{./review(id=${currentCategory.id})}"
+				th:text="${currentCategory.name}"></a></li>
+		</ul>
+	</section>
+
+
+</body>
+</html>
+
+
+

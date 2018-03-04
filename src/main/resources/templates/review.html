@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>A review</title>
+<title></title>
 </head>
+
+<header>
+
+	<nav>
+		<ul>
+			<li><a href="/categories">Categories</a></li>
+
+		</ul>
+	</nav>
+
+	<h1 th:text="${review.name}"></h1>
+
+</header>
 
 <body>
 
-	<header>
-		<ul>
-			<li><a href="/categories">Categories</a></li>
-			<li><a href="http://localhost:8080/reviews"></a>
-		</ul>
-	</header>
+	<article th:each="reviews: ${review}">
 
-
-
-		<h3 th:text="${review.name}"></h3>
+		<h2>Description</h2>
 		<p th:text="${review.description}" />
 
-
-
-		<a href="http://localhost:8080/categories">Back to list of categories</a>
-
-
+	</article>
 
 </body>
 </html>

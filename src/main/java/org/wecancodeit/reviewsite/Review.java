@@ -55,8 +55,11 @@ public class Review {
 	public String getName() {
 		return name;
 	}
-	public String getImage() {
+	public String getImageUrl() {
 		return image;
+	}
+	public String getDescription() {
+		return description;
 	}
 
 	@SuppressWarnings("unused")
