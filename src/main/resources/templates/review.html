@@ -6,12 +6,13 @@
 <title>A Review</title>
 </head>
 
-<header>
 
+<body>
+<div class="container">
+<header>
 	<nav>
 		<ul>
 			<li><a href="/categories">Categories</a></li>
-
 		</ul>
 	</nav>
 
@@ -19,7 +20,7 @@
 
 </header>
 
-<body>
+<section class="main">
 
 	<article th:each="reviews: ${review}">
 	
@@ -27,9 +28,9 @@
 
 		<h3>Description</h3>
 		<p th:text="${review.description}" />
-		
 
 	</article>
-
+	</section>
+</div>
 </body>
 </html>

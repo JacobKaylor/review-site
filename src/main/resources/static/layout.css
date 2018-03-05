@@ -1,0 +1,49 @@
+
+.container{
+	min-width: 300px;
+	min-height: 300px;
+	display:grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto auto 25px;
+	grid-gap:10px;
+	background-color: navajowhite;
+}
+
+header {
+	display:flex;
+	justify-content: space-between;
+	align-items:center;
+}
+
+.main{
+	display:grid;
+	grid-template-columns: ;
+	align-items: center;
+	grid-gap:20px;
+}
+#review-container {
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+ul{
+	font-size: 1.55rem;
+	display:flex;
+	justify-content: space-between;
+}
+.main h1{
+	display:flex;
+	justify-content: center;
+}
+#review.main {
+	display:flex;
+	justify-content: center;
+}
+footer{
+	display:flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	font-size: .6rem;
+}
