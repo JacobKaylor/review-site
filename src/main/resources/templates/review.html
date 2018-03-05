@@ -8,29 +8,29 @@
 
 
 <body>
-<div class="container">
-<header>
-	<nav>
-		<ul>
-			<li><a href="/categories">Categories</a></li>
-		</ul>
-	</nav>
+	<div class="container">
+		<header>
+			<nav>
+				<ul>
+					<li><a href="/categories">Categories</a></li>
+				</ul>
+			</nav>
 
-	<h1 th:text="${review.name}"></h1>
+			<h1 th:text="${review.name}"></h1>
 
-</header>
+		</header>
 
-<section class="main">
+		<section class="main">
 
-	<article th:each="reviews: ${review}">
-	
-		<img th:src="${review.image}" height="300px" width="300px"></img>
+			<article th:each="reviews: ${review}">
 
-		<h3>Description</h3>
-		<p th:text="${review.description}" />
+				<img th:src="${review.image}" height="300px" width="300px"></img>
 
-	</article>
-	</section>
-</div>
+				<h3>Description</h3>
+				<p th:text="${review.description}" />
+
+			</article>
+		</section>
+	</div>
 </body>
 </html>

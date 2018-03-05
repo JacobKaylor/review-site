@@ -44,6 +44,7 @@ public class Review {
 	public Collection<Tag> getTags() {
 		return tags;
 	}
+
 	public Category getCategory() {
 		return category;
 	}
@@ -55,9 +56,11 @@ public class Review {
 	public String getName() {
 		return name;
 	}
+
 	public String getImage() {
 		return image;
 	}
+
 	public String getDescription() {
 		return description;
 	}

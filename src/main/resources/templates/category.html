@@ -11,20 +11,20 @@
 	</nav>
 </header>
 <body>
-<div class="container">
-	<section class="main">
-		<h1 th:text="${category.name}+' Reviews'"></h1>
-		<ul>
-			<li th:each="currentCategory: ${category.reviews}"><a
-				th:href="@{./review(id=${currentCategory.id})}"
-				th:text="${currentCategory.name}"></a></li>
-		</ul>
-	</section>
-	<footer>
-		<p> I hope these reviews have helped</p>
-	</footer>
+	<div class="container">
+		<section class="main">
+			<h1 th:text="${category.name}+' Reviews'"></h1>
+			<ul>
+				<li th:each="currentCategory: ${category.reviews}"><a
+					th:href="@{./review(id=${currentCategory.id})}"
+					th:text="${currentCategory.name}"></a></li>
+			</ul>
+		</section>
+		<footer>
+			<p>I hope these reviews have helped</p>
+		</footer>
 
-</div>
+	</div>
 </body>
 </html>
 

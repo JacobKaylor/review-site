@@ -11,14 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Category {
 
 	@Id
 	@GeneratedValue
-	
-	
+
 	private long id;
 	private String name;
 
@@ -34,6 +32,7 @@ public class Category {
 	public Category(String name) {
 		this.name = name;
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -50,6 +49,7 @@ public class Category {
 		this.name = name;
 		this.tags = new HashSet<>(asList(tags));
 	}
+
 	@Override
 	public String toString() {
 		return name;
