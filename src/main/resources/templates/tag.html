@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<link rel="stylesheet" type="text/css" href="./layout.css" />
 <title th:text="'Tag: ' + ${tag.name}"></title>
 </head>
 <header>
 	<nav>
 		<ul>
-			<li><a href="/categories">Categories</a></li>
-			
+			<li><a href="/categories">Categories</a>
+			<p></p>
+			<a href="/tags">Tags</a></li>
 		</ul>
 	</nav>
 </header>
 <body>
+<div class="container">
+		<section class="main">
+			<h1 th:text="${tag.name}+' Reviews'"></h1>
+			<ul>
+				<li th:each="currentTag: ${tag.reviews}"><a
+					th:href="@{./review(id=${currentTag.id})}"
+					th:text="${currentTag.name}"></a></li>
+			</ul>
+		</section>
+		<footer>
+			<p>I hope these reviews have helped</p>
+		</footer>
 
-	<section class="main">
-		<h1 th:text="${tag.name}+' Tags'"></h1>
-		<ul>
-			<li th:each="currentTag: ${tag.reviews}"><a
-				th:href="@{./review(id=${currentTag.id})}"
-				th:text="${currentTag.name}"></a></li>
-		</ul>
-	</section>
-
-
+	</div>
 </body>
 </html>

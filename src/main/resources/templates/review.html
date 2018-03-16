@@ -12,7 +12,8 @@
 		<header>
 			<nav>
 				<ul>
-					<li><a href="/categories">Categories</a></li>
+					<li><a href="/categories">Categories</a>
+						<p></p> <a href="/tags">Tags</a></li>
 				</ul>
 			</nav>
 
@@ -31,6 +32,32 @@
 
 			</article>
 		</section>
+		<div class="comment-form-section">
+			<form class="add-comment" method="post">
+				<textarea name="comment-content" id="comment-content"
+					placeholder="What are your thoughts on this show?"></textarea>
+				<input type="button" name="submit-comment" value="Submit"
+					id="submit-comment" />
+			</form>
+			<div id="comment-section"></div>
+
+		</div>
+		<div class="add-remove-tags">
+			<form class="remove-tag" method="post">
+				<input name="reviewId" type="hidden" th:value="${review.id}" />
+				<ul class="content-list-items">
+					<li th:each="tag: ${review.tags}"><a
+						th:href="@{/tag(id=${tag.id})}" th:text="${tag.tag}"></a>
+						<button id="remove-tag-button" name="tagId" th:value="${tag.id}"
+							th:formaction="@{/remove-tag}">X</button></li>
+				</ul>
+			</form>
+			<form method="POST">
+				<input name="id" type="hidden" th:value="${review.id}" /> <input
+					type="text" name="tag" placeholder="Add a tag" />
+				<button th:formaction="@{/add-tag}">Add</button>
+			</form>
+		</div>
 	</div>
 </body>
 </html>

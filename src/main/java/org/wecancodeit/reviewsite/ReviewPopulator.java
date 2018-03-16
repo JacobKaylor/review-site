@@ -19,10 +19,14 @@ public class ReviewPopulator implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// Tag sports = new Tag("Sports");
-		// sports = tagRepo.save(sports);
-		// Tag design = new Tag("Design");
-		// design = tagRepo.save(design);
+		 Tag sports = new Tag("Sports");
+		 sports = tagRepo.save(sports);
+		 Tag trippy = new Tag("Trippy");
+		 trippy = tagRepo.save(trippy);
+		 Tag humor = new Tag("Humor");
+		 humor = tagRepo.save(humor);
+		 Tag inspiring = new Tag("Inspiring");
+		 inspiring = tagRepo.save(inspiring);
 		// we save on the *one* side of the relationship first
 		Category music = categoryRepo.save(new Category("Music"));
 		Category movies = categoryRepo.save(new Category("Movie"));
@@ -31,14 +35,14 @@ public class ReviewPopulator implements CommandLineRunner {
 
 		// then the things on the *many* side.
 		reviewRepo.save(
-				new Review(music, "Pink Floyd", "Are we on the dark side of the moon yet?", "/images/The Wall.jpg"));
-		reviewRepo.save(new Review(music, "Tom Petty", "He was a better solo artist", "/images/Tom Petty.jpg"));
-		reviewRepo.save(new Review(music, "Lumineers", "Life, man", "/images/Cleopatra.jpg"));
+				new Review(music, "Pink Floyd", "Are we on the dark side of the moon yet?", "/images/The Wall.jpg", trippy));
+		reviewRepo.save(new Review(music, "Tom Petty", "He was a better solo artist", "/images/Tom Petty.jpg", inspiring, humor));
+		reviewRepo.save(new Review(music, "Lumineers", "Life, man", "/images/Cleopatra.jpg", inspiring));
 		reviewRepo.save(new Review(movies, "Talladega Nights: The Ballad of Ricky Bobby", "I like to go fast",
-				"/images/Ricky Bobby.jpg"));
+				"/images/Ricky Bobby.jpg", humor, sports));
 		reviewRepo.save(new Review(movies, "Ted",
-				"Not what you think it is, although the main character is a teddy bear", "/images/Ted.jpg"));
-		reviewRepo.save(new Review(movies, "Hot Rod", "My name's Rod and I like to party!", "/images/Hot Rod.jpg"));
+				"Not what you think it is, although the main character is a teddy bear", "/images/Ted.jpg", humor));
+		reviewRepo.save(new Review(movies, "Hot Rod", "My name's Rod and I like to party!", "/images/Hot Rod.jpg", humor, sports));
 		reviewRepo.save(new Review(videogames, "Mario Kart", "N64 game only", "/images/MarioKart.jpg"));
 		reviewRepo.save(new Review(videogames, "Call of Duty: whatever the newest version is called",
 				"10th prestige is the middle/high schoolers dream", "/images/COD.jpg"));
@@ -50,6 +54,8 @@ public class ReviewPopulator implements CommandLineRunner {
 				"It's hard to believe that this is the best harry potter book", "/images/HarryPotter.jpg"));
 		reviewRepo.save(new Review(books, "Elon Musk", "This book was written 3 years ago and it is too outdated",
 				"/images/Elon.jpg"));
+		
+
 
 	}
 

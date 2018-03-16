@@ -15,11 +15,12 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Review {
 
-	public Review(Category category, String name, String description, String image) {
+	public Review(Category category, String name, String description, String image, Tag...tags) {
 		this.name = name;
 		this.category = category;
 		this.description = description;
 		this.image = image;
+		this.tags = new HashSet<>(asList(tags));
 	}
 
 	public Review(String name) {
@@ -69,10 +70,6 @@ public class Review {
 	private Review() {
 	}
 
-	public Review(String name, Tag... tags) {
-		this.name = name;
-		this.tags = new HashSet<>(asList(tags));
-	}
 
 	@Override
 	public int hashCode() {

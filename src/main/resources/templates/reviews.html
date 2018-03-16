@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<link rel="stylesheet" type="text/css" href="./layout.css" />
 
 <head>
 
@@ -9,13 +11,18 @@
 
 <body>
 	<header>
-		<ul>
-			<li><a href="/categories">Categories</a></li>
-		</ul>
-	</header>
+		<h1>Welcome to Reviews 101</h1>
 
-	<a th:each="review: ${reviews}" th:href="@{/review(id=${review.id})}"
-		th:text="${review.name}"></a>
+	</header>
+	<h3>Sort By: </h3>
+	<nav>
+		<ul>
+			<li><a href="/categories">Categories</a>
+			<p></p>
+			<a href="/tags">Tags</a></li>
+		</ul>
+	</nav>
+
 
 </body>
 </html>
