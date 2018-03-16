@@ -17,7 +17,7 @@
 	<section class="main">
 		<ul th:each="tag: ${tags}">
 			<li><a th:href="@{/tag(id=${tag.id})}"
-				th:text="${tag.name}"></a></li>
+				th:text="${tag.tag}"></a></li>
 		</ul>
 	</section>
 	<a href="/reviews">Back to Home Page</a>

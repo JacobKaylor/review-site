@@ -13,22 +13,22 @@ public class Tag {
 	@Id
 	@GeneratedValue
 	private long id;
-	private String name;
+	private String tag;
 
 	@ManyToMany(mappedBy = "tags")
 	private Collection<Review> reviews;
 
-	public Tag(String name) {
-		this.name = name;
+	public Tag(String tag) {
+		this.tag = tag;
 	}
 
 	public long getId() {
 		return id;
 	}
 
-	public String getName() {
+	public String getTag() {
 
-		return name;
+		return tag;
 	}
 
 	public Collection<Review> getReviews() {

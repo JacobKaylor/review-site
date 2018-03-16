@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="./style.css" />
 <link rel="stylesheet" type="text/css" href="./layout.css" />
-<title th:text="'Tag: ' + ${tag.name}"></title>
+<title th:text="'Tag: ' + ${tag.tag}"></title>
 </head>
 <header>
 	<nav>
@@ -17,7 +17,7 @@
 <body>
 <div class="container">
 		<section class="main">
-			<h1 th:text="${tag.name}+' Reviews'"></h1>
+			<h1 th:text="${tag.tag}+' Reviews'"></h1>
 			<ul>
 				<li th:each="currentTag: ${tag.reviews}"><a
 					th:href="@{./review(id=${currentTag.id})}"

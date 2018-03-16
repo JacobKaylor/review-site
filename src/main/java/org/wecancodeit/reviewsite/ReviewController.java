@@ -1,5 +1,8 @@
 package org.wecancodeit.reviewsite;
 
+import java.util.Collection;
+
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -60,4 +63,22 @@ public class ReviewController {
 		model.addAttribute("tags", tagRepo.findAll());
 		return "tags";
 	}
+	@RequestMapping("/add-tag")
+	public String addTag(@RequestParam(value = "id") Long id, String tag) {
+		if (!tag.equals("")) {
+			Tag tagCreation = tagRepo.findByTag(tag);
+			if (tagCreation == null) {
+				tagCreation = new Tag(tag);
+				tagRepo.save(tagCreation);
+			}
+			Review review = reviewRepo.findOne(id);
+			Collection<Tag> reviewTags = review.getTags();
+			if (!reviewTags.contains(tagCreation)) {
+				review.addTag(tagCreation);
+				reviewRepo.save(review);
+			}
+		}
+		return "redirect:/review?id=" + id;
+	}
+
 }
