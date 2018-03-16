@@ -92,4 +92,9 @@ public class Review {
 		
 	}
 
+	public void removeTag(Tag tag) {
+		tags.remove(tag);
+		
+	}
+
 }
