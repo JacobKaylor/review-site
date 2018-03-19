@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class Review {
@@ -35,7 +37,11 @@ public class Review {
 	private String description;
 	@Lob
 	private String image;
-
+	
+	
+	@OneToMany(mappedBy = "review")
+	private Collection<Comment> comments;
+	
 	@ManyToOne
 	private Category category;
 
@@ -96,5 +102,17 @@ public class Review {
 		tags.remove(tag);
 		
 	}
+
+	public Collection<Comment> getComments() {
+		
+		return comments;
+	}
+
+	public void addComment(Comment comment) {
+		comments.add(comment);
+		
+	}
+
+
 
 }

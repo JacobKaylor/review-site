@@ -16,4 +16,11 @@ public interface ReviewRepository extends CrudRepository<Review, Long>{
 	
 	Collection<Review> findByTagsId(long id);
 
+	Iterable<Review> findByDescriptionIgnoreCaseLike(String replace);
+
+	Iterable<Review> findByDescriptionIgnoreCaseContains(String search);
+	
+	
+
+
 }

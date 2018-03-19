@@ -30,8 +30,26 @@
 				<h3>Description</h3>
 				<p th:text="${review.description}" />
 
+				<h3>Comments</h3>
+				<div class="add-remove-comments">
+					<form class="remove-comment" method="post">
+						<input name="reviewId" type="hidden" th:value="${review.id}" />
+						<ul class="content-list-items">
+							<li th:each="comment: ${review.comments}"><p
+									th:href="@{/comment(id=${comment.id})}"
+									th:text="${comment.comment}"></p></li>
+						</ul>
+					</form>
+
+
+					<form method="POST">
+						<input name="id" type="hidden" th:value="${review.id}" /> <input
+							type="text" name="comment" placeholder="Add a comment" />
+						<button th:formaction="@{/add-comment}">Add</button>
+					</form>
+				</div>
 			</article>
-		</section>
+		
 
 		<div class="add-remove-tags">
 			<form class="remove-tag" method="post">
@@ -49,6 +67,11 @@
 				<button th:formaction="@{/add-tag}">Add</button>
 			</form>
 		</div>
+		</section>
 	</div>
+	<footer><p th:text="${review.name}"></p> </footer>
+	
 </body>
+
+
 </html>

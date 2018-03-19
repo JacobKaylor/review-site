@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,6 +21,9 @@ public class ReviewController {
 
 	@Resource
 	private TagRepository tagRepo;
+	
+	@Resource
+	private CommentRepository commentRepo;
 
 	@RequestMapping(value = "categories")
 	public String getAllCategories(Model model) {
@@ -88,6 +92,32 @@ public class ReviewController {
 		review.removeTag(deleteTag);
 		reviewRepo.save(review);
 		return "redirect:/review?id=" + reviewId;
+	}
+
+	@RequestMapping("/add-comment")
+	public String addComment(@RequestParam(value = "id") Long id, String comment) {
+		Review currentReview = reviewRepo.findOne(id);
+		if (!comment.equals("")) {
+			Comment commentCreation = commentRepo.findByComment(comment);
+			if (commentCreation == null) {
+				commentCreation = new Comment(currentReview, comment);
+				commentRepo.save(commentCreation);
+				
+			}
+			Review review = reviewRepo.findOne(id);
+			Collection<Comment> reviewComments = review.getComments();
+			if (!reviewComments.contains(commentCreation)) {
+				review.addComment(commentCreation);
+				reviewRepo.save(review);
+			}
+		}
+	
+		return "redirect:/review?id=" + id;
+	}
+	@RequestMapping("/remove-comment")
+	public String deleteComment(@PathVariable Long id, Long commentId) {
+		commentRepo.delete(commentId);
+		return "redirect:/review/{id}";
 	}
 
 }

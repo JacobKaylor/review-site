@@ -1,3 +1,9 @@
+
+.container{
+	display:grid;
+	grid-template-rows: 50px auto 50px;
+}
+
 body {
 	font-family: helvetica, sans-serif;
 	background-color: coral;
@@ -11,4 +17,7 @@ body {
 
 ul {
 	list-style-type: none;
+}
+button {
+	font-size: 10px;
 }
